@@ -27,6 +27,10 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'rack-cors'
 
 gem 'figaro'
+# gem 'httparty' =>> commented out since 'faraday' is being used; both are used for 
+gem 'faraday'
+gem 'dotenv-rails'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

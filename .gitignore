@@ -28,3 +28,6 @@
 
 #ignore api keys
 /config/application.yml
+
+#ignore api keys
+.env
