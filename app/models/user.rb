@@ -7,9 +7,13 @@ class User < ApplicationRecord
     has_many :likers, through: :liker_users
 
     has_many :messaged_users, foreign_key: :sender_id, class_name: 'Message'
-    has_many :messaged, through: :messaged_users
+    has_many :sent_messages, through: :messaged_users
 
     has_many :recieved_messages, foreign_key: :recipient_id, class_name: 'Message'
     has_many :messages_recieved, through: :recieved_messages
 
+
+    def send_message
+        return "message sent"
+    end
 end
