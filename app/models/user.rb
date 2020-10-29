@@ -6,4 +6,10 @@ class User < ApplicationRecord
     has_many :liker_users, foreign_key: :liked_id, class_name: 'Heart'
     has_many :likers, through: :liker_users
 
+    has_many :messaged_users, foreign_key: :sender_id, class_name: 'Message'
+    has_many :messaged, through: :messaged_users
+
+    has_many :recieved_messages, foreign_key: :recipient_id, class_name: 'Message'
+    has_many :messages_recieved, through: :recieved_messages
+
 end
