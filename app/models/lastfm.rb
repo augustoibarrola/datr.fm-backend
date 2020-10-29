@@ -1,2 +1,0 @@
-class Lastfm < ApplicationRecord
-end
