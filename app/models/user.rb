@@ -1,5 +1,7 @@
 class User < ApplicationRecord
 
+    has_secure_password
+
     has_many :liked_users, foreign_key: :liker_id, class_name: 'Heart'
     has_many :likeds, through: :liked_users
 
@@ -11,6 +13,7 @@ class User < ApplicationRecord
 
     has_many :recieved_messages, foreign_key: :recipient_id, class_name: 'Message'
     has_many :messages_recieved, through: :recieved_messages
+
 
 
     def send_message
