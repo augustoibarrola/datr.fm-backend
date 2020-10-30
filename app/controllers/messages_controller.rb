@@ -16,9 +16,18 @@ class MessagesController < ApplicationController
         })
     end
 
+    def create 
+        message = Message.new(message_params)
+        if message.save
+            render json: message
+        else
+            render json: message.errors
+        end
+    end
+
     private 
 
     def message_params 
-        params.require(:message).permit(:message_body)
+        params.require(:message).permit(:sender_id, :recipient_id, :message_body)
     end
 end
