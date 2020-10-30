@@ -9,7 +9,7 @@
 User.destroy_all
 
 
-User.create(name: "Augusto", username: "Otsugua", email: "augusto@email.com", description: "Cheap date")
+User.create(name: "Augusto", username: "Otsugua", email: "augusto@email.com", description: "Cheap date", password: "hello")
 
-User.create( name: "Anastasia", username: "KittyGirl", email: "anastasia@hotmail.com", description: "Street cat running from heartache")
+User.create( name: "Anastasia", username: "KittyGirl", email: "anastasia@hotmail.com", description: "Street cat running from heartache", password: "hello")
 
