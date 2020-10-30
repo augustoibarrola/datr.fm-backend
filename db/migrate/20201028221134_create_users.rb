@@ -12,5 +12,3 @@ class CreateUsers < ActiveRecord::Migration[6.0]
   end
 end
 
-# TODO drop database and before migrating user table again, change password to password_digest. 
-# TODO password_digest is what 'bcrypt' gem will be looking for once installed =>> install it!
