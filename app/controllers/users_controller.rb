@@ -27,6 +27,7 @@ class UsersController < ApplicationController
             render json: { user: UserSerializer.new(@user), jwt: @token }, status: :created 
         else
             render json: { error: 'failed to create user' }, status: :not_acceptable
+            # if the user doesn't create for some error or other, this is the error message that will show up
         end
     end
 

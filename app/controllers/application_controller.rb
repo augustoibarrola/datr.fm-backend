@@ -17,7 +17,7 @@ class ApplicationController < ActionController::API
         if auth_header
             token = auth_header.split(' ')[1]
             begin
-                JWT.decode(token, 's3cret', true, algorithm: 'HS256')
+                JWT.decode(token, 's3cret', true)
             rescue JWT::DecodeError
                 nil
             end
