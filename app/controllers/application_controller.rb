@@ -1,12 +1,14 @@
 class ApplicationController < ActionController::API
 
+    # any calls made to this rails api will trigger the :authorized method to fire
     before_action :authorized
     # uncommenting the above will make it so that access to the API is not granted
     # unless user has successfully logged into db
     
     def encode_token(payload)
         JWT.encode(payload, 's3cret')
-
+        # the encode method provided ny JWT generates a token 
+        # 's3cret' is user defines – it can be any stirng. 
     end
 
     def auth_header
@@ -17,7 +19,7 @@ class ApplicationController < ActionController::API
         if auth_header
             token = auth_header.split(' ')[1]
             begin
-                JWT.decode(token, 's3cret', true)
+                JWT.decode(token, 's3cret', true, algorithm: 'HS256')
             rescue JWT::DecodeError
                 nil
             end
