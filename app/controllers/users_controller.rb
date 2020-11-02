@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    # skip_before_action :authorized, only: [:create]
+    skip_before_action :authorized, only: [:create]
 
     def profile
         render json: { user: UserSerializer.new(current_user) }, status: :accepted
@@ -11,8 +11,8 @@ class UsersController < ApplicationController
     end
 
     def show 
-        user = User.find_by(id: params[:id])
-        render json: user
+        @user = User.find_by(id: params[:id])
+        render json: @user
     end
 
     def new 

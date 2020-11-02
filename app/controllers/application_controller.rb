@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::API
 
-    # before_action :authorized
+    before_action :authorized
     # uncommenting the above will make it so that access to the API is not granted
     # unless user has successfully logged into db
     
@@ -39,3 +39,6 @@ class ApplicationController < ActionController::API
         render json: { message: 'Please Log In' }, status: :unauthorized unless logged_in?
     end
 end
+
+
+# before every method run, :authorized is run. it denies access to the backend unless logged_in is true. 
