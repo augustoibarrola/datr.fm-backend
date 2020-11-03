@@ -32,6 +32,18 @@ class UsersController < ApplicationController
         end
     end
 
+    def total_likes_given
+        @likes_given = Heart.where(:liker_id => current_user.id)
+
+        render json: { likes_given: @likes_given }
+    end
+
+    def total_unique_likers
+        @unique_likers = current_user.unique_likers
+
+        render json: { unique_likers: @unique_likers }
+    end
+
     private 
 
     def user_params

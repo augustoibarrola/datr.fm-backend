@@ -22,4 +22,12 @@ class User < ApplicationRecord
     def send_message
         return "message sent"
     end
+
+    def total_likes
+        self.likers
+    end
+
+    def unique_likers 
+        self.likers.uniq
+    end
 end
