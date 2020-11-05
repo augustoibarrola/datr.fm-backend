@@ -26,11 +26,11 @@ class MessagesController < ApplicationController
     # end
 
     def create 
-        message = Message.new(message_params)
-        if message.save
-            render json: message
+        new_message = Message.new(message_params)
+        if new_message.save
+            render json: { new_message: new_message, message: "new message created!"  }
         else
-            render json: message.errors
+            render json: new_message.errors
         end
     end
 

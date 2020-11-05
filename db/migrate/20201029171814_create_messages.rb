@@ -1,8 +1,8 @@
 class CreateMessages < ActiveRecord::Migration[6.0]
   def change
     create_table :messages do |t|
-      t.integer :sender_id
-      t.integer :recipient_id
+      t.belongs_to :sender, class_name: "User"
+      t.belongs_to :recipient, class_name: "User"
       t.text :message_body
 
       t.timestamps
