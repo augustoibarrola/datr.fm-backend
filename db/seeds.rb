@@ -26,3 +26,15 @@ User.create( name: "Anastasia", username: "KittyGirl", email: "anastasia@hotmail
 10.times do 
 User.create(name: Faker::Artist.unique.name, username: Faker::Internet.unique.username, email: Faker::Internet.unique.free_email, description: Faker::Dessert.flavor, image_url: image_stock.sample, password: "hello" )
 end
+
+100.times do
+    Message.create(sender: User.all.sample, recipient: User.all.sample, message_body: Faker::Quote.famous_last_words )
+end
+
+
+# create_table "messages", force: :cascade do |t|
+#     t.integer "sender_id"
+#     t.integer "recipient_id"
+#     t.text "message_body"
+#     t.datetime "created_at", precision: 6, null: false
+#     t.datetime "updated_at", pre

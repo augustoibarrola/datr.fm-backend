@@ -13,7 +13,6 @@ class MessagesController < ApplicationController
         render json: message.to_json(:include => {
             :sender => {:only => [:name, :username, :email]}, 
             :recipient => {:only => [:name, :username, :email]}
-            :message_body
         })
     end
 

@@ -5,13 +5,13 @@ class User < ApplicationRecord
     validates :username, presence: true 
     # validates :password, presence: true 
 
-    # has_many :liked_users, foreign_key: :liker_id, class_name: 'Heart'
-    # # has_many :likeds, through: :liked_users
-    # accepts_nested_attributes_for :liked_users, allow_destroy: true
+    has_many :liked_users, foreign_key: :liker_id, class_name: 'Heart'
+    # has_many :likeds, through: :liked_users
+    accepts_nested_attributes_for :liked_users, allow_destroy: true
 
-    # has_many :liker_users, foreign_key: :liked_id, class_name: 'Heart'
-    # # has_many :likers, through: :liker_users
-    # accepts_nested_attributes_for :liker_users, allow_destroy: false
+    has_many :liker_users, foreign_key: :liked_id, class_name: 'Heart'
+    # has_many :likers, through: :liker_users
+    accepts_nested_attributes_for :liker_users, allow_destroy: false
 
     has_many :messages_sent, class_name: 'Message', 
                              foreign_key: :sender_id
