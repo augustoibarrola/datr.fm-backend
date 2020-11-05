@@ -9,12 +9,22 @@ class MessagesController < ApplicationController
     end
 
     def show 
-        message = Message.find_by(id: params[:id])
+        message = Message.where(sender_id: params[:id])
         render json: message.to_json(:include => {
             :sender => {:only => [:name, :username, :email]}, 
             :recipient => {:only => [:name, :username, :email]}
+            :message_body
         })
     end
+
+    # def show_total_recieved
+    #     @messages = Messages.where(recipient_id: params[:id])
+    #     render json: @messages.json(:include => {
+    #         :sender => {:only => [:name, :username, :email]}, 
+    #         :recipient => {:only => [:name, :username, :email]},
+    #         :message_body
+    #     })
+    # end
 
     def create 
         message = Message.new(message_params)

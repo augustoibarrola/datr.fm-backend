@@ -10,5 +10,7 @@ Rails.application.routes.draw do
   get '/total_likes_given' => 'users#total_likes_given'
   get '/total_unique_likers' => 'users#total_unique_likers'
 
+  get '/messages_recieved' => 'messages#show_total_recieved'
+
 end
  
