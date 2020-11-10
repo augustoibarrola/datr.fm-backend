@@ -1,5 +1,7 @@
 class HeartsController < ApplicationController
     skip_before_action :authorized, only: [:create]
+    before_action :set_heart, only: [ :destroy]
+
 
     def index 
         hearts = Heart.all
@@ -15,10 +17,19 @@ class HeartsController < ApplicationController
         end
     end
 
+    def destroy 
+        @heart.destroy
+    end
+
     private 
+
+    def set_heart
+        @heart = Heart.find(params[:id])
+    end
 
     def heart_params 
         params.require(:heart).permit(:liker_id, :liked_id)
     end
+
 
 end
