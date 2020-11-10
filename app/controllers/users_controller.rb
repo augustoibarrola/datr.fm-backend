@@ -32,6 +32,13 @@ class UsersController < ApplicationController
         end
     end
 
+    def update 
+        @user = User.find_by(id: params[:id])
+        if @user.update(description: params[:description])
+        render json: @user
+        end
+    end
+
     def total_likes_given
         @likes_given = Heart.where(:liker_id => current_user.id)
 
@@ -47,7 +54,7 @@ class UsersController < ApplicationController
     private 
 
     def user_params
-        params.require(:user).permit(:name, :username, :email, :description, :image_url, :password)
+        params.require(:user).permit(:name, :username, :email, :description, :image_url)
     end
 
 end 
