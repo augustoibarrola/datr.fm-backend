@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
     def show 
         @user = User.find_by(id: params[:id])
-        render json: @user
+        render json: { message: "present user", user: @user }
     end
 
     def new 

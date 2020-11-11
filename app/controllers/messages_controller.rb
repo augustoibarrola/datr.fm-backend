@@ -28,7 +28,7 @@ class MessagesController < ApplicationController
     def create 
         new_message = Message.new(message_params)
         if new_message.save
-            render json: { new_message: new_message, message: "new message created!"  }
+            render json: { new_message: new_message, message: "new message created!", recipient: new_message.recipient, sender: new_message.sender }
         else
             render json: new_message.errors
         end
