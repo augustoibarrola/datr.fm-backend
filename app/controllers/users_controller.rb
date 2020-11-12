@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
     def show 
         @user = User.find_by(id: params[:id])
-        render json: { message: "present user", user: @user }
+        render json: @user
     end
 
     def new 
@@ -34,9 +34,15 @@ class UsersController < ApplicationController
 
     def update 
         @user = User.find_by(id: params[:id])
-        if @user.update(description: params[:description])
+        @user.update(user_params)
+        if @user.update(user_params)
         render json: @user
         end
+    end
+
+    def destroy 
+        @user.delete
+        render json: {message: "delete successful"}
     end
 
     def total_likes_given
@@ -54,7 +60,7 @@ class UsersController < ApplicationController
     private 
 
     def user_params
-        params.require(:user).permit(:name, :username, :email, :description, :image_url)
+        params.require(:user).permit(:name, :username, :email, :description, :image_url, :password)
     end
 
 end 
