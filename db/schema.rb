@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_29_171814) do
+ActiveRecord::Schema.define(version: 2020_11_10_190725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "albums", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "name"
+    t.string "artist_name"
+    t.string "image_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_albums_on_user_id"
+  end
 
   create_table "hearts", force: :cascade do |t|
     t.integer "liker_id"
@@ -23,18 +33,24 @@ ActiveRecord::Schema.define(version: 2020_10_29_171814) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.integer "sender_id"
-    t.integer "recipient_id"
+    t.bigint "sender_id"
+    t.bigint "recipient_id"
     t.text "message_body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipient_id"], name: "index_messages_on_recipient_id"
+    t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
+    t.integer "age"
     t.string "username"
+    t.string "lastfm_username"
+    t.string "spotify_username"
     t.string "email"
     t.text "description"
+    t.string "image_url"
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
