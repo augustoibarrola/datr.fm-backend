@@ -14,6 +14,12 @@ class AlbumsController < ApplicationController
 
     end
 
+    def destroy
+        @album = Album.find_by(id: params[:id])
+        @album.delete
+        render json: {album: @album, message: "favorite album successfully deleted"}
+    end
+
     private 
 
     def albums_params 
