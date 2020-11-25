@@ -6,7 +6,7 @@ class AlbumsController < ApplicationController
     end
 
     def create 
-        @album = Album.create(user_id: params[:user_id], name: params[:name], artist_name: params[:artist_name], image_url: params[:image_url])
+        @album = Album.find_or_create_by(user_id: params[:user_id], name: params[:name], artist_name: params[:artist_name], image_url: params[:image_url])
 
         if @album.save 
             render json: { album: @album, message: 'favorite album successfully created'}
