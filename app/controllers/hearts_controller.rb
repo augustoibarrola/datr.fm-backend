@@ -2,7 +2,6 @@ class HeartsController < ApplicationController
     skip_before_action :authorized, only: [:create]
     before_action :set_heart, only: [:destroy]
 
-
     def index 
         hearts = Heart.all
         render json: { hears: hearts }
