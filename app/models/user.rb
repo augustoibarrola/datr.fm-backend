@@ -6,6 +6,7 @@ class User < ApplicationRecord
     # validates :password, presence: true 
 
     has_many :albums
+    has_many :tracks
 
     has_many :liked_users, foreign_key: :liker_id, class_name: 'Heart'
     # has_many :likeds, through: :liked_users

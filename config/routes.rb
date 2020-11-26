@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   resources :users
   resources :hearts
   resources :albums
+  resources :tracks
+  get '/tracks/search' => 'tracks#search'
+  get '/tracks/top_100' => 'tracks#top_100'
   post '/login', to: 'auth#create'
   get '/profile', to: 'users#profile'
   get '/hearts' => 'hearts#index'
