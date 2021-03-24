@@ -8,8 +8,8 @@ class HeartsController < ApplicationController
     end
 
     def create
-        @heart = Heart.find_or_create_by!(liker_id: params[:liker_id], liked_id: params[:liked_id])
-        # @heart = Heart.create(heart_params)
+        # @heart = Heart.find_or_create_by!(liker_id: params[:liker_id], liked_id: params[:liked_id])
+        @heart = Heart.find_or_create_by!(heart_params)
         if @heart.save
             render json: { heart: @heart, message: "new like!"}
         end
@@ -25,7 +25,7 @@ class HeartsController < ApplicationController
         @heart = Heart.find(params[:id])
     end
 
-    def  
+    def heart_params
         params.require(:heart).permit(:liker_id, :liked_id)
     end
 
